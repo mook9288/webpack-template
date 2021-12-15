@@ -147,3 +147,28 @@ module.exports = {
   },
 // ...
 ```
+
+## CSS, SASS, PostCSS, HMR
+
+```bash
+npm i -D css-loader mini-css-extract-plugin
+```
+
+###### webpack.config.js
+
+```js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin()],
+  // ...
+};
+```
