@@ -80,3 +80,9 @@ module.exports = {
 ```
 
 `devtool`옵션은 개발의 편의성을 위해 제공되는 소스맵(Source Map) 옵션이다.
+
+## babel
+
+```bash
+npm i -D babel-loader @babel/core @babel/preset-env
+```
