@@ -86,3 +86,64 @@ module.exports = {
 ```bash
 npm i -D babel-loader @babel/core @babel/preset-env
 ```
+
+### babel config 설정
+
+###### webpack.config.js 수정
+
+```js
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  // ...
+};
+```
+
+###### babel.config.js 생성
+
+```js
+module.exports = {
+  presets: ['@babel/preset-env'],
+};
+```
+
+![babel 설정 후 npm run build](./readmeImg/2.babel_setting_build.png)
+
+### Source Maps, 개발용과 배포용 분기
+
+###### webpack.config.js
+
+```js
+let mode = 'development';
+if (process.env.NODE_ENV === 'production') {
+  mode = 'production';
+}
+module.exports = {
+  mode: mode,
+  // ...
+  devtool: 'source-map',
+  // ...
+};
+```
+
+###### package.json
+
+```json
+// ...
+  "scripts": {
+    // ...
+    "build": "NODE_ENV=production webpack",
+    "build-dev": "webpack"
+  },
+// ...
+```
