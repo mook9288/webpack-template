@@ -64,3 +64,19 @@ npm i -D webpack webpack-cli webpack-dev-server
 ###### `npm run build`
 
 ![npm run build](./readmeImg/1.npm_i_add_private.png)
+
+### webpack.config 파일 생성
+
+###### webpack.config.js
+
+```js
+module.exports = {
+  mode: 'development',
+  devtool: false,
+  devServer: {
+    static: './dist',
+  },
+};
+```
+
+`devtool`옵션은 개발의 편의성을 위해 제공되는 소스맵(Source Map) 옵션이다.
