@@ -257,3 +257,45 @@ module.exports = {
   // ...
 };
 ```
+
+## browserslistrc
+
+- 지원 브라우저의 버전 정의
+
+###### .browserslistrc
+
+```
+last 2 versions
+> 0.5%
+IE 10
+```
+
+###### webpack.config.js
+
+```js
+// ...
+let target = 'web';
+
+if (process.env.NODE_ENV === 'production') {
+  // ...
+  target = 'browserslist';
+}
+module.exports = {
+  mode: mode,
+  module: {
+    rules: [
+      {
+        test: /\.(s[ac]|c)ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
+      // ...
+    ],
+  },
+};
+// ...
+```
