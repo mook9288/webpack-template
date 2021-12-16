@@ -148,7 +148,27 @@ module.exports = {
 // ...
 ```
 
+- `"build": "NODE_ENV=production webpack",`으로만 작성할 경우 Window에서 제대로 build가 되지 않는다. \
+  `cross-env`를 사용하면 운영체제나 플랫폼에 종속되지 않고 동일한 방법으로 env 변수를 주입하기 때문에 MAC과 Window에서 동일하게 사용할 수 있다.
+
+```bash
+npm install -D cross-env
+```
+
+###### package.json
+
+```json
+// ...
+  "scripts": {
+    // ...
+    "build": "cross-env NODE_ENV=production webpack",
+  },
+// ...
+```
+
 ## CSS, SASS, PostCSS, HMR
+
+### CSS
 
 ```bash
 npm i -D css-loader mini-css-extract-plugin
@@ -169,6 +189,71 @@ module.exports = {
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
+  // ...
+};
+```
+
+```bash
+npm i -D css-loader mini-css-extract-plugin
+```
+
+### SASS
+
+- sass와 sass-loader를 설치해준다.
+
+```bash
+npm i -D sass sass-loader
+```
+
+###### webpack.config.js
+
+```js
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.s?css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
+  // ...
+};
+```
+
+### PostCSS
+
+- postcss와 postcss-preset-env, postcss-loader를 설치해준다.
+
+```bash
+npm i -D postcss postcss-preset-env postcss-loader
+```
+
+###### postcss.config.js
+
+```js
+module.exports = {
+  plugins: ['postcss-preset-env'],
+};
+```
+
+###### webpack.config.js
+
+```js
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.s?css$/i,
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+      },
+    ],
+  },
   // ...
 };
 ```
