@@ -1,0 +1,1 @@
+!function(){"use strict";console.log("Creating and Understanding a Basic Webpack 5 Setup"),console.log("get classes was called"),console.log("ravalynn"),console.log("Hjulmar")}();
