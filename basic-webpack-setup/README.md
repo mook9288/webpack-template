@@ -2,6 +2,8 @@
 
 - [youtube - Creating and Understanding a Basic Webpack 5 Setup](https://youtu.be/X1nxTjVDYdQ)
 
+<br />
+
 ### 프로젝트 시작
 
 ###### package.json 생성
@@ -10,6 +12,8 @@
 # package.json 생성
 npm init -y
 ```
+
+<br />
 
 ### 폴더 directory
 
@@ -22,6 +26,8 @@ npm init -y
 - .babelrc
 - webpack.config.js
 ```
+
+<br />
 
 ## Webpack 설정
 
@@ -103,6 +109,8 @@ getClasses();
 `"build": "webpack"`을 추가하여 webpack의 로컬 버전을 실행한다. \
 `npm run build`로 `npx webpack`을 대체할 수 있다.
 
+<br />
+
 ### Webpack을 통해 Babel 변환
 
 es6와 같은 최신(?) javascript 코드를 오래된 브라우저에서도 동일하게 작동하기 위해 변환이 필요하다.
@@ -140,6 +148,8 @@ module.exports = {
 }
 ```
 
+<br />
+
 ### 개발 모드와 배포 모드의 전환
 
 `mode`에 따라 개발(development)/배포(production) 모드를 전환할 수 있다.
@@ -156,6 +166,8 @@ module.exports = {
   },
 };
 ```
+
+<br />
 
 ### 디버깅용 소스 맵
 
@@ -176,6 +188,8 @@ module.exports = {
 
 [npm run build](./readme_image/devtool_source-map.png)
 
+<br />
+
 ### 파일 저장 시, 변경된 파일 감시 모드
 
 `--watch`은 TARGET_FOLDER_PATH에 있는 모든 파일들의 변경을 감지하여 자동으로 트랜스파일한다. (축약형 `-w`)
@@ -191,6 +205,8 @@ module.exports = {
   // ...
 }
 ```
+
+<br />
 
 ### 저장 시 핫 새로고침용 개발 서버
 
@@ -239,6 +255,8 @@ module.exports = {
 }
 ```
 
+<br />
+
 ### 커스텀 입력 및 출력 경로
 
 `entry` 옵션은 웹팩이 파일을 읽어들이기 시작하는 부분이다.
@@ -246,14 +264,14 @@ module.exports = {
 
 > 확장 가능한 웹팩 설정 : 재사용성, 다른 설정과의 결합이 뛰어나다. 이것은 환경, 빌드 대상, 런타임에 의한 관심사 분리에 많이 사용되는 기술이다.
 
-### entry 옵션
+#### entry 옵션
 
 - 문자열 혹은 객체로 받는다.
 - 어떤 모듈을 사용해서 시작할지 설정한다.
 - 어플리케이션 진입점인 `src/index.js`로 설정한다.
 - `entry` 내에 `main` 옵션은 번들링된 파일명이 된다.
 
-### output 옵션의 속성
+#### output 옵션의 속성
 
 - `path`: output으로 나올 파일이 저장될 경로
 - `publicPath`: 파일들이 위치할 서버 상의 경로
@@ -273,6 +291,8 @@ module.exports = {
   // ...
 };
 ```
+
+<br />
 
 ### 개발 또는 배포 환경을 동적으로 설정
 
@@ -303,6 +323,8 @@ module.exports = {
   // ...
 };
 ```
+
+<br />
 
 ## 정리
 
