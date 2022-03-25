@@ -9,7 +9,6 @@
 ###### package.json 생성
 
 ```bash
-# package.json 생성
 npm init -y
 ```
 
@@ -26,6 +25,8 @@ npm init -y
 - .babelrc
 - webpack.config.js
 ```
+
+_NOTE: 일반적으로 dist 또는 public 폴더는 git에서 업로드하지 않지만, 데모 목적으로 업로드됐다._
 
 <br />
 
