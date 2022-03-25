@@ -7,7 +7,6 @@
 ### package.json 생성
 
 ```bash
-# package.json 생성
 npm init -y
 ```
 
