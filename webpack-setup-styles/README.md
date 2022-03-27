@@ -24,6 +24,8 @@ _NOTE: 일반적으로 dist 또는 public 폴더는 git에서 업로드하지 �
 
 <br />
 
+## Webpack 설정
+
 ### 프로젝트 시작과 Build 테스트
 
 ```bash
@@ -59,3 +61,68 @@ document.querySelector('h1').innerHTML = 'Welcome to the webpack';
 `production` build는 실제로 실행하는데 필요한 내용만 최종 파일에 build된다. \
 따라사 위의 `src/index.js`파일의 처음 코드처럼 작성했을 경우, 빈 내용이 출력되고, \
 실제로 실행하는 내용이 존재하도록 수정하면 실행에 필요한 코드가 출력된다.
+
+### CSS Import 기능 추가
+
+###### css-loader, style-loader install
+
+```bash
+npm i -D css-loader style-loader
+```
+
+###### src/index.js 수정
+
+```js
+import './style.css';
+const headline = 'Welcome to the webpack';
+document.querySelector('h1').innerHTML = headline;
+```
+
+###### src/style.css 생성
+
+```css
+body {
+  background: yellow;
+}
+h1 {
+  font-size: 60px;
+  text-align: center;
+}
+```
+
+###### dist/index.html 생성
+
+```html
+<body>
+  <div class="container">
+    <h1>Webpack CSS Example</h1>
+  </div>
+  <script src="./main.js"></script>
+</body>
+```
+
+###### webpack.config.js 생성
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+};
+```
+
+<!--
+### SAS/SCSS 지원 추가
+### CSS + SCSS + SAS용 Regex 브레드다운
+### 인라인 css가 아닌 .css 파일 출력
+### 디버깅용 소스 맵
+### 자동 리픽서 및 폴백을 사용한 PostCSS
+### 크로스 브라우저 제어를 위한 브라우저 목록
+### 셋업의 유연성을 나타내는 순풍 추가
+### 정리
+ -->
