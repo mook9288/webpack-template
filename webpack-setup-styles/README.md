@@ -141,8 +141,52 @@ module.exports = {
 };
 ```
 
+### CSS + SCSS + SASS 사용 가능
+
+###### webpack.config.js 수정
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(s[ac]|c)ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
+};
+```
+
+### 인라인 css가 아닌 .css 파일로 출력
+
+###### mini-css-extract-plugin install
+
+```bash
+npm i -D mini-css-extract-plugin
+```
+
+###### webpack.config.js 수정
+
+```js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// ...
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.(s[ac]|c)ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin()],
+  // ...
+};
+```
+
 <!--
-### CSS + SCSS + SAS용 Regex 브레드다운
 ### 인라인 css가 아닌 .css 파일 출력
 ### 디버깅용 소스 맵
 ### 자동 리픽서 및 폴백을 사용한 PostCSS
