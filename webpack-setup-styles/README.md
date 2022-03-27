@@ -116,8 +116,32 @@ module.exports = {
 };
 ```
 
+### SASS/SCSS 지원 추가
+
+css 파일을 scss파일로 변경해준다.
+
+###### scss, sass-loader install
+
+```bash
+npm i -D sass sass-loader
+```
+
+###### webpack.config.js 수정
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
+};
+```
+
 <!--
-### SAS/SCSS 지원 추가
 ### CSS + SCSS + SAS용 Regex 브레드다운
 ### 인라인 css가 아닌 .css 파일 출력
 ### 디버깅용 소스 맵
