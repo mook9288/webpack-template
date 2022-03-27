@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --mainBg: salmon;
 }
@@ -6,9 +10,17 @@ $light-text: moccasin;
 body {
   background-color: var(--mainBg);
   color: $light-text;
+}
+
+.container {
+  display: flex;
+  padding: 1rem;
+  background: linear-gradient(to top, black, white);
 
   h1 {
     font-size: 60px;
     text-align: center;
+
+    @apply px-4 py-2 rounded font-semibold bg-gray-200 text-black;
   }
 }

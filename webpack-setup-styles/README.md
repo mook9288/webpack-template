@@ -186,11 +186,154 @@ module.exports = {
 };
 ```
 
-<!--
-### 인라인 css가 아닌 .css 파일 출력
-### 디버깅용 소스 맵
-### 자동 리픽서 및 폴백을 사용한 PostCSS
-### 크로스 브라우저 제어를 위한 브라우저 목록
-### 셋업의 유연성을 나타내는 순풍 추가
+### PostCSS (autoprefixer & fallbacks)
+
+###### postcss, postcss-loader, postcss-preset-env install
+
+```bash
+npm i -D postcss postcss-loader postcss-preset-env
+```
+
+###### postcss.config.js 생성
+
+```js
+module.exports = {
+  plugins: ['postcss-preset-env'],
+};
+```
+
+###### webpack.config.js 수정
+
+```js
+// ...
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.(s[ac]|c)ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+          'postcss-loader',
+        ],
+      },
+    ],
+  },
+  // ...
+};
+```
+
+### 크로스브라우징을 위한 브라우저의 버전 정의
+
+###### .browserslistrc 생성
+
+```
+last 2 versions
+> 0.5%
+IE 10
+```
+
+### CSS 프레임워크 [Tailwind](https://tailwindcss.com/docs/installation)
+
+###### install
+
+```bash
+npm install -D tailwindcss
+npx tailwind init
+```
+
+###### postcss.config.js 수정
+
+```js
+module.exports = {
+  plugins: [require('postcss-preset-env'), require('tailwindcss')],
+};
+```
+
+###### src/style.scss 수정
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
 ### 정리
- -->
+
+###### package.json
+
+```json
+{
+  "name": "webpack-setup-styles",
+  "version": "1.0.0",
+  "description": "- [youtube - Webpack 5 CSS Walkthrough: Sass, PostCSS and more!](https://youtu.be/SH6Y_MQzFVw)",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve",
+    "watch": "webpack --watch",
+    "build": "NODE_ENV=production webpack",
+    "build-dev": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.12",
+    "postcss-loader": "^6.2.1",
+    "postcss-preset-env": "^7.4.3",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
+```
+
+###### webpack.config.js
+
+```js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const mode =
+  process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+module.exports = {
+  mode: mode,
+  module: {
+    rules: [
+      {
+        test: /\.(s[ac]|c)ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+          'postcss-loader',
+        ],
+      },
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin()],
+  devtool: 'source-map',
+};
+```
+
+###### postcss.config.js
+
+```js
+module.exports = {
+  plugins: [require('postcss-preset-env')],
+};
+```
+
+###### .browserslistrc
+
+```
+last 2 versions
+> 0.5%
+IE 10
+
+```
