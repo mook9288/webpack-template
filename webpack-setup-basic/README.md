@@ -2,7 +2,7 @@
 
 - [youtube - Creating and Understanding a Basic Webpack 5 Setup](https://youtu.be/X1nxTjVDYdQ)
 
-<br />
+## 프로젝트 설정
 
 ### 프로젝트 시작
 
@@ -29,8 +29,6 @@ npm init -y
 _NOTE: 일반적으로 dist 또는 public 폴더는 git에서 업로드하지 않지만, 데모 목적으로 업로드됐다._
 
 <br />
-
-## Webpack 설정
 
 ### JavaScript bundle을 위한 Webpack 소개와 예시
 

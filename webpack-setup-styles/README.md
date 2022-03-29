@@ -2,6 +2,8 @@
 
 - [youtube - Webpack 5 CSS Walkthrough: Sass, PostCSS and more!](https://youtu.be/SH6Y_MQzFVw)
 
+## 프로젝트 개요
+
 CSS, Sas/Scss, PostCSS 기능 제공\
 preset-env, autoprefixer fallbacks, cross-browser 지원
 또한 오래된 브라우저 지원 커스터마이즈를 위한 `.browserlistrc`도 포함
@@ -24,7 +26,7 @@ _NOTE: 일반적으로 dist 또는 public 폴더는 git에서 업로드하지 �
 
 <br />
 
-## Webpack 설정
+## 프로젝트 설정
 
 ### 프로젝트 시작과 Build 테스트
 
