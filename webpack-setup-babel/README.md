@@ -32,12 +32,13 @@ npm init -y
 ### 폴더 directory
 
 ```
-- src
-  - index.js
 - dist
   - index.html
+- src
+  - index.js
 - package.json
 - .babelrc
+- .browserslistrc
 - webpack.config.js
 ```
 
